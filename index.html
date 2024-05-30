@@ -1,54 +1,29 @@
+
 <!DOCTYPE html>
-<html lang="es">
+
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programar Notificación</title>
-<script>
-function scheduleNotification() {
-    var hour = document.getElementById("hour").value;
-    var minute = document.getElementById("minute").value;
-    
-    var notificationTime = new Date();
-    notificationTime.setHours(hour);
-    notificationTime.setMinutes(minute);
-    notificationTime.setSeconds(0);
-    
-    var currentTime = new Date();
-    var timeDifference = notificationTime.getTime() - currentTime.getTime();
-    
-    if (timeDifference <= 0) {
-        alert("Por favor, ingrese una hora futura para la notificación.");
-        return;
-    }
-    
-    setTimeout(function() {
-        var notificationTitle = "Recordatorio";
-        var notificationOptions = {
-            body: "¡Es hora de tu evento!"
-        };
-        
-        if ("Notification" in window) {
-            Notification.requestPermission().then(function(result) {
-                if (result === "granted") {
-                    var notification = new Notification(notificationTitle, notificationOptions);
-                }
-            });
-        } else if ("mozNotification" in navigator) {
-            navigator.mozNotification.createNotification(notificationOptions.body, notificationTitle, "").show();
-        } else {
-            alert("Lo siento, tu navegador no admite notificaciones.");
-        }
-    }, timeDifference);
-}
-</script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.8">
+  <title>Contacto </title>
 </head>
 <body>
-<h1>Programar Notificación</h1>
-<label for="hour">Hora (0-23):</label>
-<input type="number" id="hour" min="0" max="23">
-<label for="minute">Minuto (0-59):</label>
-<input type="number" id="minute" min="0" max="59">
-<button onclick="scheduleNotification()">Programar Notificación</button>
+<h1>Contactanos</h1>
+
+<form action="https://formsubmit.co/cv641499@gmail.com" method="POST">
+ <label for= "nombre">Nombre:</label>
+ <input type="text" name="nombre" id="nombre"/>
+ <br />
+ <label for="email">Email:</label>
+ <input type="email" name="email" id="email"/>
+ <br />
+ <label for="mensaje">Mensaje</label>
+ <br />
+ <textarea name="mensaje" id="mensaje" cols="30" rows="10"></textarea>
+ <br />
+  <input type="submit" value="Enviar"/>
+</form>
 </body>
 </html>
